@@ -1,0 +1,40 @@
+#wrapper{
+    margin: 3%;
+    height: 100%;
+}
+
+#nav{
+    width: 80%;
+    height: 200%;
+    background: #EAEAEA;
+    padding: 10px;
+}
+img{
+    width: 100%;
+}
+#nav p{
+     margin: 0;
+}
+
+#spacer{
+    margin-bottom: 1000px; 
+}
+
+#profileContent{
+    margin-bottom: 20px;
+    background: #EAEAEA;
+    padding: 10px;
+}
+
+#profileContent p{
+    margin: auto;
+}
+
+#viewTotal{
+    display: inline;
+    padding: 50px;
+}
+
+hr{
+    border-top: 1px solid black;
+}

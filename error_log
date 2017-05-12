@@ -1,0 +1,4 @@
+[07-May-2017 12:54:40 America/Chicago] PHP Fatal error:  Call to a member function route() on a non-object in /home/knguyen/public_html/328/bloggingAssignment/index.php on line 3
+[07-May-2017 14:03:37 America/Chicago] HTTP 404 (GET /images/user.PNG)
+[07-May-2017 14:03:37 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[07-May-2017 14:03:37 America/Chicago] [328/bloggingAssignment/index.php:24] Base->run()
