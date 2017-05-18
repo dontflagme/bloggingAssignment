@@ -23,7 +23,7 @@
                             <h2>Blog Site</h2>
                            
                             <p><a href="./" /> Home</a></p>
-                            <p><a href="#" /> my Blogs</a></p>
+                            <p><a href="./myblogs" /> my Blogs</a></p>
                             <p><a href="./aboutus" /> About us</a></p>
                             <p><a href="#" /> Logout</a></p>
                             <p><a href="./updateblog" /> update Test</a></p>

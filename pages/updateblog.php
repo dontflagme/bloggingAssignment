@@ -22,7 +22,7 @@
   <img src="images/trumpet.png" />
                             <h2>Blog Site</h2>
                            
-                           <p><a href="./" /> Home</a></p>
+                            <p><a href="./" /> Home</a></p>
                             <p><a href="./myblogs" /> my Blogs</a></p>
                             <p><a href="./aboutus" /> About us</a></p>
                             <p><a href="#" /> Logout</a></p>
