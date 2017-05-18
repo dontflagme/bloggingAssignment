@@ -21,5 +21,28 @@ $f3->set('DEBUG', 3);
                      }
                    );
                     
+                    
+                  $f3->route('GET /viewBlog',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/viewblog.html');
+                   });
+                  
+                  $f3->route('GET /fullblog',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/fullblog.html');
+                   });
+                  $f3->route('GET /aboutus',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/aboutus.html');
+                   });
+                  
+                  $f3->route('GET /login',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/login.html');
+                   });
 $f3->run();        
 ?>
