@@ -12,3 +12,17 @@
 [12-May-2017 02:07:06 America/Chicago] HTTP 404 (GET /viewBlog)
 [12-May-2017 02:07:06 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [12-May-2017 02:07:06 America/Chicago] [328/bloggingAssignment/index.php:30] Base->run()
+[17-May-2017 23:44:13 America/Chicago] Unable to open pages/register.html
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2740] user_error()
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/index.php:51] View->render()
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[17-May-2017 23:44:14 America/Chicago] [328/bloggingAssignment/index.php:53] Base->run()
+[17-May-2017 23:44:34 America/Chicago] Unable to open pages/register.html
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2740] user_error()
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/index.php:51] View->render()
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/index.php:53] Base->run()

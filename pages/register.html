@@ -9,6 +9,7 @@
         <link href= "css/fullblog.css" rel="stylesheet" type="text/css">
         <link href= "css/aboutus.css" rel="stylesheet" type="text/css">
         <link href= "css/login.css" rel="stylesheet" type="text/css">
+        <link href= "css/register.css" rel="stylesheet" type="text/css">
         
     </head>
     
@@ -24,7 +25,6 @@
                             <p><a href="./aboutus" /> About us</a></p>
                             <p><a href="./login" /> Login</a></p>
                             <div id="spacer"> </div>
-
                 </section><!--section Nav-->
             </div><!--cols 3-->
             
@@ -32,9 +32,9 @@
                 <section id="nav2">
                     
                     <div id="headerWords">
-                        <img src="images/lock.png" />
-                        <h1>Welcome Back!</h1>
-                        <h3>Please login below!</h3>
+                        <img src="images/writing.png" />
+                        <h1>Become a Blogger</h1>
+                        <h3>Create a new account below</h3>
                     </div>
                 </section><!--section Nav-->
                 
@@ -44,31 +44,60 @@
                 <section id="nav">
                     <div class="container">
                         <form>
+                            
                           <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-8">
+                            <div class="offset-sm-2 col-sm-4">
                               <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
                             </div>
                           </div>
+                          
+  
+                          
                           <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-8">
+                            <div class="offset-sm-2 col-sm-4">
                               <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
                             </div>
                           </div>
 
                           <div class="form-group row">
-                            <div class="offset-sm-2 col-sm-8">
-                              <button type="submit" name="button" class="btn btn-primary">Sign in</button>
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                            <div class="offset-sm-2 col-sm-4">
+                              <input type="text" name="username" class="form-control" id="inputPassword3" placeholder="Password">
                             </div>
                           </div>
+                          
+
+                         
+                        <div class="form-group">
+                          <label for="bio">Quick Bio</label>
+                          <textarea class="form-control" id="bio" rows="3" ></textarea>
+                        </div>
+                        
+                                                    <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-4">
+                              <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                              
+                        <div class="form-group">
+                          <label for="exampleInputFile">File input</label>
+                          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        </div>
+   
+                            
+                          </div>
                         </form>
-                      </div>           
+                      </div>
+                
+
                 </section><!--section Nav-->
                 
             </div><!--cols 3-->
 
-            </div><!--End row-->            
+            </div><!--End row-->
+            
+
         </div><!--End wrapper-->
     </body>
 </html>

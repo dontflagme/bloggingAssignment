@@ -44,5 +44,11 @@ $f3->set('DEBUG', 3);
                     $view = new View;
                     echo $view->render('pages/login.html');
                    });
+                  
+                  $f3->route('GET /register',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/register.html');
+                   });
 $f3->run();        
 ?>
