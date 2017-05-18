@@ -50,5 +50,23 @@ $f3->set('DEBUG', 3);
                     $view = new View;
                     echo $view->render('pages/register.html');
                    });
+                  
+                  $f3->route('GET /createblog',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/createblog.php');
+                   });
+                  
+                  $f3->route('GET /updateblog',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/updateblog.php');
+                   });
+                  
+                   $f3->route('GET /myblogs',
+                   function(){
+                    $view = new View;
+                    echo $view->render('pages/myblogs.php');
+                   });
 $f3->run();        
 ?>

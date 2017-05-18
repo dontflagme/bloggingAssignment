@@ -26,3 +26,6 @@
 [17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
 [17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
 [17-May-2017 23:44:34 America/Chicago] [328/bloggingAssignment/index.php:53] Base->run()
+[18-May-2017 02:18:09 America/Chicago] HTTP 404 (GET /trumpet.png)
+[18-May-2017 02:18:09 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
+[18-May-2017 02:18:09 America/Chicago] [328/bloggingAssignment/index.php:59] Base->run()

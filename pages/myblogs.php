@@ -10,6 +10,7 @@
         <link href= "css/aboutus.css" rel="stylesheet" type="text/css">
         <link href= "css/login.css" rel="stylesheet" type="text/css">
         <link href= "css/register.css" rel="stylesheet" type="text/css">
+        <link href= "css/yourblogs.css" rel="stylesheet" type="text/css">
         
     </head>
     
@@ -23,10 +24,11 @@
                             <h2>Blog Site</h2>
                            
                             <p><a href="./" /> Home</a></p>
-                            <p><a href="#" /> my Blogs</a></p>
+                            <p><a href="./myblogs" /> my Blogs</a></p>
                             <p><a href="./aboutus" /> About us</a></p>
                             <p><a href="#" /> Logout</a></p>
                             <p><a href="./updateblog" /> update Test</a></p>
+                            
                             <div id="spacer"> </div>
                 </section><!--section Nav-->
             </div><!--cols 3-->
@@ -35,46 +37,56 @@
                 <section id="nav2">
                     
                     <div id="headerWords">
-                        <img src="images/writing.png" />
-                        <h1>What's on your mind?</h1>
+                        <img src="images/user.png" />
+                        <h1>Your Blogs</h1>
                     </div>
                 </section><!--section Nav-->
                 
             </div><!--cols 3-->
             
-               <div class="col-md-8">
+               <div class="col-md-5">
                 <section id="nav">
-                    <div class="container">
-                        <form>
-                            
-                                                   <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-1 col-form-label">Title</label>
-                            <div class="offset-sm-8 col-sm-8">
-                              <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Title...">
-                            </div>
-                          </div>   
-                         
-                        <div class="form-group">
-                          <label for="bio">Blog Entry</label>
-                          <textarea class="form-control" id="bio" rows="6" ></textarea>
-                        </div>
-                        
-                                                    <div class="form-group row">
-                              <div class="offset-sm-2 col-sm-4">
-                              <button type="submit" name="submit" class="btn btn-primary">Create!</button>
-                            </div>
-                              
-   
-                            
-                          </div>
-                        </form>
-                      </div>
-                
+<div class="container">
 
-                </section><!--section Nav-->
+  <div class="table-responsive">          
+  <table class="table" id="table">
+    <thead>
+      <tr>
+        <th>Blog</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Title Title Title of blog</td>
+        <td><a href="./updateblog">Update icon</a></td>
+        <td>Delete Icon</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
                 
             </div><!--cols 3-->
 
+           <div class="col-md-2">
+                <section id="">
+ 
+
+                </section><!--section Nav-->
+                
+                <section id="nav">
+ 
+                    <h2>Joe (Insert Name)</h2>
+                    <p>Bio: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                          when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+                </section><!--section Nav-->
             </div><!--End row-->
             
 

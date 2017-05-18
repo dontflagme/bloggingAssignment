@@ -22,8 +22,8 @@
   <img src="images/trumpet.png" />
                             <h2>Blog Site</h2>
                            
-                            <p><a href="./" /> Home</a></p>
-                            <p><a href="#" /> my Blogs</a></p>
+                           <p><a href="./" /> Home</a></p>
+                            <p><a href="./myblogs" /> my Blogs</a></p>
                             <p><a href="./aboutus" /> About us</a></p>
                             <p><a href="#" /> Logout</a></p>
                             <p><a href="./updateblog" /> update Test</a></p>
@@ -36,7 +36,7 @@
                     
                     <div id="headerWords">
                         <img src="images/writing.png" />
-                        <h1>What's on your mind?</h1>
+                        <h1>Change your mind?</h1>
                     </div>
                 </section><!--section Nav-->
                 
@@ -48,20 +48,20 @@
                         <form>
                             
                                                    <div class="form-group row">
-                            <label for="inputPassword3" class="col-sm-1 col-form-label">Title</label>
+                            <label for="inputPassword3" class="col-sm-1 col-form-label">Update title</label>
                             <div class="offset-sm-8 col-sm-8">
                               <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Title...">
                             </div>
                           </div>   
                          
                         <div class="form-group">
-                          <label for="bio">Blog Entry</label>
+                          <label for="bio">Update Blog Entry</label>
                           <textarea class="form-control" id="bio" rows="6" ></textarea>
                         </div>
                         
                                                     <div class="form-group row">
                               <div class="offset-sm-2 col-sm-4">
-                              <button type="submit" name="submit" class="btn btn-primary">Create!</button>
+                              <button type="submit" name="submit" class="btn btn-primary">update</button>
                             </div>
                               
    
