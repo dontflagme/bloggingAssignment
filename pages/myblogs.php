@@ -76,7 +76,7 @@
 
                 </section><!--section Nav-->
                 
-                <section id="nav">
+                <section id="nav2">
  
                     <h2>Joe (Insert Name)</h2>
                     <p>Bio: Lorem Ipsum is simply dummy text of the printing and typesetting industry.

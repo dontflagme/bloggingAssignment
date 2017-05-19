@@ -29,3 +29,9 @@
 [18-May-2017 02:18:09 America/Chicago] HTTP 404 (GET /trumpet.png)
 [18-May-2017 02:18:09 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1645] Base->error()
 [18-May-2017 02:18:09 America/Chicago] [328/bloggingAssignment/index.php:59] Base->run()
+[19-May-2017 15:42:35 America/Chicago] PHP Fatal error:  Call to a member function set() on a non-object in /home/knguyen/public_html/328/bloggingAssignment/index.php on line 67
+[19-May-2017 15:42:35 America/Chicago] Fatal error: Call to a member function set() on a non-object
+[19-May-2017 15:42:35 America/Chicago] [328/bloggingAssignment/index.php:67] 
+[19-May-2017 15:43:24 America/Chicago] PHP Fatal error:  Call to a member function set() on a non-object in /home/knguyen/public_html/328/bloggingAssignment/index.php on line 67
+[19-May-2017 15:43:24 America/Chicago] Fatal error: Call to a member function set() on a non-object
+[19-May-2017 15:43:24 America/Chicago] [328/bloggingAssignment/index.php:67] 
