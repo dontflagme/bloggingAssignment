@@ -46,9 +46,9 @@
                <div class="col-md-8">
                 <section id="nav">
                     <div class="container">
-                        <form>
+                        <form action="./creatingProcess" method="post">
                             
-                                                   <div class="form-group row">
+                        <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-1 col-form-label">Title</label>
                             <div class="offset-sm-8 col-sm-8">
                               <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Title...">
@@ -57,7 +57,7 @@
                          
                         <div class="form-group">
                           <label for="bio">Blog Entry</label>
-                          <textarea class="form-control" id="bio" rows="6" ></textarea>
+                          <textarea class="form-control" name="blogEntry" id="bio" rows="6" ></textarea>
                         </div>
                         
                                                     <div class="form-group row">
@@ -68,7 +68,7 @@
    
                             
                           </div>
-                        </form>
+                        </form action="./createMember" method="post">
                       </div>
                 
 

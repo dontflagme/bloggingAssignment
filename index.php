@@ -154,8 +154,30 @@ $bloggerDB = new bloggerDB();
                   //Create blog when logged in.
                   $f3->route('GET /createblog',
                    function(){
+
+                    
                     $view = new View;
                     echo $view->render('pages/createblog.php');
+                   });
+                  
+                 //Creating  a blog to the database.
+                  $f3->route('POST /creatingProcess',
+                   function($f3){
+                    
+                    $currentUser = $_SESSION['member'];
+                    $currenUserID = $_SESSION['id'];
+                    
+                    $_SESSION['title'] = $_POST['title'];
+                    $_SESSION['blogEntry'] = $_POST['blogEntry'];
+                    
+                    $title = $_SESSION['title'];
+                    $blogentry = $_SESSION['blogEntry'];
+                    
+                    $blogContent = new blogContent($currenUserID, $title, $blogentry, 0, 1);
+                    $GLOBALS['bloggerDB']->addBlog($currenUserID, $title, $blogentry, 0, 1);
+                    $view = new View;
+                    echo $view->render('pages/creatingProcess.php');
+                    $f3->reroute('/myblogs');
                    });
                   
                   //Updates a specific blog

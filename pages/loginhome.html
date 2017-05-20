@@ -17,9 +17,10 @@
                            
                             <p><a href="./loginhome" /> Home</a></p>
                             <p><a href="./myblogs" /> my Blogs</a></p>
+                            <p><a href="./createblog" /> create blog</a></p>
                             <p><a href="./aboutuslogin" /> About us</a></p>
                             <p><a href="#" /> Logout</a></p>
-                            <p><a href="./updateblog" /> update Test</a></p>
+
                             
                             <div id="spacer"> </div>
                 </section><!--section Nav-->
