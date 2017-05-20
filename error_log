@@ -238,3 +238,10 @@
 [20-May-2017 03:46:46 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
 [20-May-2017 03:46:46 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
 [20-May-2017 03:46:46 America/Chicago] [328/bloggingAssignment/index.php:196] Base->run()
+[20-May-2017 15:21:33 America/Chicago] Unable to open pages/myblogs.php
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2178] Base->error()
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:2934] user_error()
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/index.php:195] Preview->render()
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1791] call_user_func_array()
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/vendor/bcosca/fatfree-core/base.php:1612] Base->call()
+[20-May-2017 15:21:33 America/Chicago] [328/bloggingAssignment/index.php:197] Base->run()

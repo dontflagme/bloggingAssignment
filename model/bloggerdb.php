@@ -144,6 +144,30 @@ VALUES
              
             return $resultsArray;
         }
+        
+                //READ
+        /**
+         * Returns all pets in the database collection.
+         *
+         * @access public
+         *
+         * @return an associative array of pets indexed by id
+         */
+        function allUserBlogs($id)
+        {
+            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM blog_content WHERE member_id = $id ORDER BY date_added DESC";
+            $results = $this->_pdo->query($select);
+            
+             
+            $resultsArray = array();
+             
+            //map each pet id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[$row['id']] = $row;
+            }
+             
+            return $resultsArray;
+        }
          
         /**
          * Returns a pet that has the given id.

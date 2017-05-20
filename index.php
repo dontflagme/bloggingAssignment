@@ -21,7 +21,7 @@ $bloggerDB = new bloggerDB();
                       $member = new Member("", "", "", "", "");
                       
                       $_SESSION['member'] = $member;
-                      echo $view->render('pages/home.html');
+                      echo Template::instance()->render('pages/home.html');
                      }
                    );
                     
@@ -189,9 +189,14 @@ $bloggerDB = new bloggerDB();
                   
                   //Shows the blogs you can update or delete
                    $f3->route('GET /myblogs',
-                   function(){
-                    $view = new View;
-                    echo $view->render('pages/myblogs.php');
+                   function($f3){
+                    $id = $_SESSION['id'];
+                    $blogsDB = $GLOBALS['bloggerDB']->allUserBlogs($id);
+                    
+                    $f3->set('blogs',  $blogsDB);
+                    
+                    echo Template::instance()->render('pages/myblogs.html');
+                    print_r($blogsDB);
                    });
 $f3->run();        
 ?>
