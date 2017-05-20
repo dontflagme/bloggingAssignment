@@ -84,7 +84,7 @@
                     /**
          *@param - takes in a String first name
          */
-            function setPofilePic($profilepic)
+            function setProfilePic($profilepic)
             {
                 $this->profilepic = $profilepic;
             }
@@ -94,7 +94,7 @@
              */
             function getProfilePic()
             {
-                return $this->$profile_pic;
+                return $this->profilepic;
             }
             
                     /**
@@ -110,7 +110,7 @@
              */
             function getBio()
             {
-                return $this->$bio;
+                return $this->bio;
             }
             
             

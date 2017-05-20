@@ -31,6 +31,7 @@ return array(
     'Magic' => $vendorDir . '/bcosca/fatfree-core/magic.php',
     'Markdown' => $vendorDir . '/bcosca/fatfree-core/markdown.php',
     'Matrix' => $vendorDir . '/bcosca/fatfree-core/matrix.php',
+    'Member' => $baseDir . '/classes/member.php',
     'Prefab' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Preview' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Registry' => $vendorDir . '/bcosca/fatfree-core/base.php',
@@ -47,4 +48,6 @@ return array(
     'Web\\OAuth2' => $vendorDir . '/bcosca/fatfree-core/web/oauth2.php',
     'Web\\OpenID' => $vendorDir . '/bcosca/fatfree-core/web/openid.php',
     'Web\\Pingback' => $vendorDir . '/bcosca/fatfree-core/web/pingback.php',
+    'blogContent' => $baseDir . '/classes/blog_content.php',
+    'bloggerDB' => $baseDir . '/model/bloggerdb.php',
 );

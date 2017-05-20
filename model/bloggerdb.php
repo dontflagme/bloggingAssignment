@@ -9,32 +9,39 @@
      */
  
  /**
-  *    sql statement: dating
+  *   CREATE TABLE blog_members(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    member_password VARCHAR(50) NOT NULL,
+    profile_pic VARCHAR(100),
+    bio VARCHAR(500)
+    );
 
-        CREATE TABLE members(
-            member_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            fname VARCHAR(15),
-            lname VARCHAR(20),
-            age int,
-            gender VARCHAR(10),
-            phone int,
-            email VARCHAR(30),
-            state VARCHAR(50),
-            seeking VARCHAR(15),
-            bio VARCHAR(255),
-            premium int(1),
-            image VARCHAR(500),
-            interests VARCHAR(500)
-        );
+INSERT INTO blog_members
+(username, email, member_password, profile_pic, bio)
+VALUES
+('UberMunchPunch', 'Kevin.Nguyen0509@gmail.com', '1234', 'img/img.png', 'this is the bio');
 
 
-INSERT INTO members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
-VALUES("Kevin", "Nguyen", 24,"Male", 2068504170, "Kevin.Nguyen@gmail.com", "Washington", "Female", "This is just the test bio", 0, "image/testimage.png", "hiking, Banana boating, ape hunting, plane flying, banana boats");
-    
+CREATE TABLE blog_content(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    member_id int NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    blog_content VARCHAR(500) NOT NULL,
+    date_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    click_count int NOT NULL DEFAULT 0,
+    isDeleted int NOT NULL DEFAULT 1
+    );
+
+INSERT INTO blog_content
+(member_id, title, blog_content, click_count, isDeleted)
+VALUES
+(2, 'se
   */
 
     //CONNECT
-    class DatingDB
+    class bloggerDB
     {
         private $_pdo;
         
@@ -71,24 +78,43 @@ VALUES("Kevin", "Nguyen", 24,"Male", 2068504170, "Kevin.Nguyen@gmail.com", "Wash
          *
          * @return true if the insert was successful, otherwise false
          */
-        function addMember($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio, $premium, $image, $interests)
+        function addMember($username, $email, $password, $profilepic, $bio)
         {
-            $insert = 'INSERT INTO members (fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests) VALUES (:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)';
+            $insert = 'INSERT INTO blog_members (username, email, member_password, profile_pic, bio) VALUES (:username, :email, :password, :profilepic, :bio)';
              
             $statement = $this->_pdo->prepare($insert);
-            $statement->bindValue(':fname', $fname, PDO::PARAM_STR);
-            $statement->bindValue(':lname', $lname, PDO::PARAM_STR);
-            $statement->bindValue(':age', $age, PDO::PARAM_STR);
-            $statement->bindValue(':gender', $gender, PDO::PARAM_STR);
-            $statement->bindValue(':phone', $phone, PDO::PARAM_STR);
+            $statement->bindValue(':username', $username, PDO::PARAM_STR);
             $statement->bindValue(':email', $email, PDO::PARAM_STR);
-            $statement->bindValue(':state', $state, PDO::PARAM_STR);
-            $statement->bindValue(':seeking', $seeking, PDO::PARAM_STR);
-            $statement->bindValue(':bio', $bio, PDO::PARAM_STR);
-            $statement->bindValue(':premium', $premium, PDO::PARAM_STR);
-            $statement->bindValue(':image', $image, PDO::PARAM_STR);
-            $statement->bindValue(':interests', $interests, PDO::PARAM_STR);
+            $statement->bindValue(':password', $password, PDO::PARAM_STR);
+            $statement->bindValue(':profilepic', $profilepic, PDO::PARAM_STR);
+            $statement->bindValue(':bio', $bio, PDO::PARAM_STR);            
+            $statement->execute();
             
+            //Return ID of inserted row
+            return $this->_pdo->lastInsertId();
+        }
+        
+        
+                /**
+         * Adds a pet to the collection of pets in the db.
+         *
+         * @access public
+         * @param string $name the name of the pet
+         * @param string $type the type of pet (giraffe, turtle, bear, ...)
+         * @param string $color the color of the animal
+         *
+         * @return true if the insert was successful, otherwise false
+         */
+        function addBlog($memberid, $title, $blogcontent, $clickcount, $isDeleted)
+        {
+            $insert = 'INSERT INTO blog_content (member_id, title, blog_content, click_count, isDeleted) VALUES (:member_id, :title, :blogcontent, :clickcount, :isDeleted)';
+             
+            $statement = $this->_pdo->prepare($insert);
+            $statement->bindValue(':member_id', $memberid, PDO::PARAM_STR);
+            $statement->bindValue(':title', $title, PDO::PARAM_STR);
+            $statement->bindValue(':blogcontent', $blogcontent, PDO::PARAM_STR);
+            $statement->bindValue(':clickcount', $clickcount, PDO::PARAM_STR);
+            $statement->bindValue(':isDeleted', $isDeleted, PDO::PARAM_STR);            
             $statement->execute();
             
             //Return ID of inserted row
@@ -138,6 +164,26 @@ VALUES("Kevin", "Nguyen", 24,"Male", 2068504170, "Kevin.Nguyen@gmail.com", "Wash
              
             return $statement->fetch(PDO::FETCH_ASSOC);
         }
+        
+               /**
+         * Returns a pet that has the given id.
+         *
+         * @access public
+         * @param int $id the id of the pet
+         *
+         * @return an associative array of pet attributes, or false if
+         * the pet was not found
+         */
+        function memberByEmail($email)
+        {
+            $select = 'SELECT id, username, email, member_password, profile_pic, bio FROM blog_members WHERE email=:email';
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':email', $email, PDO::PARAM_INT);
+            $statement->execute();
+             
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
          
         /**
          * Returns true if the name is used by a pet in the database.
@@ -147,12 +193,13 @@ VALUES("Kevin", "Nguyen", 24,"Male", 2068504170, "Kevin.Nguyen@gmail.com", "Wash
          *
          * @return true if the name already exists, otherwise false
          */   
-        function petNameExists($name)
+        function memberExists($email, $password)
         {            
-            $select = 'SELECT id, name, type, color FROM pets WHERE name=:name';
+            $select = 'SELECT id, username, email, member_password, profile_pic, bio FROM blog_members WHERE email=:email && member_password=:password';
              
             $statement = $this->_pdo->prepare($select);
-            $statement->bindValue(':name', $name, PDO::PARAM_STR);
+            $statement->bindValue(':email', $email, PDO::PARAM_STR);
+            $statement->bindValue(':password', $password, PDO::PARAM_STR);
             $statement->execute();
              
             $row = $statement->fetch(PDO::FETCH_ASSOC);

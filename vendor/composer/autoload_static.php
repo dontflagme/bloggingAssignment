@@ -32,6 +32,7 @@ class ComposerStaticInit1309a4acaa2b21b75cf10bdbfb20d43d
         'Magic' => __DIR__ . '/..' . '/bcosca/fatfree-core/magic.php',
         'Markdown' => __DIR__ . '/..' . '/bcosca/fatfree-core/markdown.php',
         'Matrix' => __DIR__ . '/..' . '/bcosca/fatfree-core/matrix.php',
+        'Member' => __DIR__ . '/../..' . '/classes/member.php',
         'Prefab' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Preview' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Registry' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
@@ -48,6 +49,8 @@ class ComposerStaticInit1309a4acaa2b21b75cf10bdbfb20d43d
         'Web\\OAuth2' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/oauth2.php',
         'Web\\OpenID' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/openid.php',
         'Web\\Pingback' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/pingback.php',
+        'blogContent' => __DIR__ . '/../..' . '/classes/blog_content.php',
+        'bloggerDB' => __DIR__ . '/../..' . '/model/bloggerdb.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
