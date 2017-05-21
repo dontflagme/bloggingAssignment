@@ -63,8 +63,8 @@
         <?php foreach (($blogs?:[]) as $blog): ?>
             <tr>
                <td><?= $blog['title'] ?></td>
-               <td><a href="./updateblog/?id=<?= $blog['id'] ?>>"> update</a></td>
-               <td><a href='./delete/<?= $pet['id'] ?>'>delete</a></td>
+               <td><a href="./updateblog/?id=<?= $blog['id'] ?>"> update</a></td>
+               <td><a href='./delete/?id=<?= $blog['id'] ?>'>delete</a></td>
             </tr>
          <?php endforeach; ?>
     </tbody>

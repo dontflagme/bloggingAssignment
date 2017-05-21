@@ -183,11 +183,49 @@ $bloggerDB = new bloggerDB();
                   //Updates a specific blog
                   $f3->route('GET /updateblog',
                    function($f3, $params){
-                   $bloggingId = $_GET['id'];
                     
-                    $blogid = $params.id;
+                   $bloggingId = $_GET['id'];
+                   $currentBlog = $GLOBALS['bloggerDB']->blogById($bloggingId);
+                   
+                   $title = $currentBlog['title'];
+                   $blogentry = $currentBlog['blog_content'];
+                    
+                    $f3->set('title', $title);
+                    $f3->set('blogEntry', $blogentry);
+                    
+                    
+                    $_SESSION['updateBlogId'] = $bloggingId;
                     echo Template::instance()->render('pages/updateblog.php');
-                    //print_r($blogid);
+                    echo $bloggingId;
+                   });
+                  
+                                    //Updates a specific blog
+                  $f3->route('GET /delete',
+                   function($f3, $params){
+                    
+                   $bloggingId = $_GET['id'];
+                   $currentBlog = $GLOBALS['bloggerDB']->deleteBlog($bloggingId);
+                   
+
+                    $f3->reroute('/myblogs');
+                   });
+                  
+                  
+                                    //Updates a specific blog
+                  $f3->route('POST /updateblogprocess',
+                   function($f3, $params){
+                    
+                   $id = $_SESSION['updateBlogId'];
+                   $currentBlog = $GLOBALS['bloggerDB']->blogById($bloggingId);
+                   
+                   $title = $_POST['title'];
+                   $blogentry = $_POST['blogEntry'];
+                   
+                   $GLOBALS['bloggerDB']->updateblogById($id, $title, $blogEntry);
+                    
+                    
+                      $f3->reroute('/myblogs');
+                     
                    });
                   
    

@@ -45,18 +45,18 @@
                <div class="col-md-8">
                 <section id="nav">
                     <div class="container">
-                        <form>
+                        <form action="./updateblogprocess" method="post">
                             
-                                                   <div class="form-group row">
+                          <div class="form-group row">
                             <label for="inputPassword3" class="col-sm-1 col-form-label">Update title</label>
                             <div class="offset-sm-8 col-sm-8">
-                              <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Title...">
+                              <input type="text" name="title" class="form-control" id="inputPassword3" value="<?= $title ?>" placeholder="Title...">
                             </div>
                           </div>   
                          
                         <div class="form-group">
                           <label for="bio">Update Blog Entry</label>
-                          <textarea class="form-control" id="bio" rows="6" ></textarea>
+                          <textarea class="form-control" name="blogEntry" id="bio" rows="6" ><?= $blogEntry ?></textarea>
                         </div>
                         
                                                     <div class="form-group row">

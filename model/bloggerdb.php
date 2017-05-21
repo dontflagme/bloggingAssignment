@@ -155,7 +155,7 @@ VALUES
          */
         function allUserBlogs($id)
         {
-            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM blog_content WHERE member_id = $id ORDER BY date_added DESC";
+            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM blog_content WHERE member_id = $id";
             $results = $this->_pdo->query($select);
             
              
@@ -178,15 +178,66 @@ VALUES
          * @return an associative array of pet attributes, or false if
          * the pet was not found
          */
-        function petById($id)
+        function blogById($id)
         {
-            $select = 'SELECT id, name, type, color FROM pets WHERE id=:id';
+            
+            $select = 'SELECT id, member_id, title, blog_content, click_count, isDeleted FROM blog_content WHERE id=:id';
              
             $statement = $this->_pdo->prepare($select);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             $statement->execute();
              
             return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        
+                /**
+         * Returns a pet that has the given id.
+         *
+         * @access public
+         * @param int $id the id of the pet
+         *
+         * @return an associative array of pet attributes, or false if
+         * the pet was not found
+         */
+        function updateblogById($id, $title, $blogEntry)
+        {
+            
+            $update = "UPDATE blog_content SET title=:title, blog_content=:blogEntry WHERE id=:id";
+             
+            $statement = $this->_pdo->prepare($update);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->bindValue(':title', $title, PDO::PARAM_STR);
+            $statement->bindValue(':blogEntry', $blogEntry, PDO::PARAM_STR);
+
+             
+            $statement->execute();
+             
+           // return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        
+             //UPDATE
+      
+         /**
+         * Updates the attributes for a pet in the database.
+         *
+         * @access public
+         * @param int $id the id of the pet
+         * @param string $name the name of the pet
+         * @param string $type the type of pet (giraffe, turtle, bear, ...)
+         * @param string $color the color of the animal
+         */  
+        function updatePet($id, $name, $type, $color)
+        {          
+            $update = 'UPDATE pets SET name=:name, type=:type, color=:color
+                                   WHERE id=:id';
+             
+            $statement = $this->_pdo->prepare($update);
+            $statement->bindValue(':name', $name, PDO::PARAM_STR);
+            $statement->bindValue(':type', $type, PDO::PARAM_STR);
+            $statement->bindValue(':color', $color, PDO::PARAM_STR);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+             
+            $statement->execute();
         }
         
                /**
@@ -231,30 +282,7 @@ VALUES
             return !empty($row);
         }
          
-        //UPDATE
-      
-         /**
-         * Updates the attributes for a pet in the database.
-         *
-         * @access public
-         * @param int $id the id of the pet
-         * @param string $name the name of the pet
-         * @param string $type the type of pet (giraffe, turtle, bear, ...)
-         * @param string $color the color of the animal
-         */  
-        function updatePet($id, $name, $type, $color)
-        {          
-            $update = 'UPDATE pets SET name=:name, type=:type, color=:color
-                                   WHERE id=:id';
-             
-            $statement = $this->_pdo->prepare($update);
-            $statement->bindValue(':name', $name, PDO::PARAM_STR);
-            $statement->bindValue(':type', $type, PDO::PARAM_STR);
-            $statement->bindValue(':color', $color, PDO::PARAM_STR);
-            $statement->bindValue(':id', $id, PDO::PARAM_INT);
-             
-            $statement->execute();
-        }
+   
          
         //DELETE
          
@@ -266,9 +294,9 @@ VALUES
          *
          * @return true if the delete was successful, otherwise false
          */
-        function deletePet($id)
+        function deleteBlog($id)
         {        
-            $delete = 'DELETE FROM pets WHERE id=:id';
+            $delete = 'DELETE FROM blog_content WHERE id=:id';
              
             $statement = $this->_pdo->prepare($delete);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
