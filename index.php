@@ -182,21 +182,31 @@ $bloggerDB = new bloggerDB();
                   
                   //Updates a specific blog
                   $f3->route('GET /updateblog',
-                   function(){
-                    $view = new View;
-                    echo $view->render('pages/updateblog.php');
+                   function($f3, $params){
+                   $bloggingId = $_GET['id'];
+                    
+                    $blogid = $params.id;
+                    echo Template::instance()->render('pages/updateblog.php');
+                    //print_r($blogid);
                    });
+                  
+   
                   
                   //Shows the blogs you can update or delete
                    $f3->route('GET /myblogs',
                    function($f3){
                     $id = $_SESSION['id'];
+                    $bio = $_SESSION['bio'];
+                    $username = $_SESSION['username'];
+                    
                     $blogsDB = $GLOBALS['bloggerDB']->allUserBlogs($id);
                     
                     $f3->set('blogs',  $blogsDB);
+                    $f3->set('bio', $bio);
+                    $f3->set('username', $username);
                     
                     echo Template::instance()->render('pages/myblogs.html');
-                    print_r($blogsDB);
+                    //print_r($blogsDB);
                    });
 $f3->run();        
 ?>

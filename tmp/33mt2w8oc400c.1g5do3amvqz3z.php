@@ -10,7 +10,6 @@
         <link href= "css/aboutus.css" rel="stylesheet" type="text/css">
         <link href= "css/login.css" rel="stylesheet" type="text/css">
         <link href= "css/register.css" rel="stylesheet" type="text/css">
-        <link href= "css/yourblogs.css" rel="stylesheet" type="text/css">
         
     </head>
     
@@ -20,8 +19,7 @@
             <div class="row">
             <div class="col-md-3">
                 <section id="nav">
-  <img src="images/trumpet.png" />
-                        <img src="images/trumpet.png" />
+                 <img src="images/trumpet.png" />
                             <h2>Blog Site</h2>
                            
                             <p><a href="./loginhome" /> Home</a></p>
@@ -37,55 +35,46 @@
                 <section id="nav2">
                     
                     <div id="headerWords">
-                        <img src="images/user.png" />
-                        <h1>Your Blogs</h1>
+                        <img src="images/writing.png" />
+                        <h1>Change your mind?</h1>
                     </div>
                 </section><!--section Nav-->
                 
             </div><!--cols 3-->
             
-               <div class="col-md-5">
+               <div class="col-md-8">
                 <section id="nav">
-<div class="container">
+                    <div class="container">
+                        <form>
+                            
+                                                   <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-1 col-form-label">Update title</label>
+                            <div class="offset-sm-8 col-sm-8">
+                              <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Title...">
+                            </div>
+                          </div>   
+                         
+                        <div class="form-group">
+                          <label for="bio">Update Blog Entry</label>
+                          <textarea class="form-control" id="bio" rows="6" ></textarea>
+                        </div>
+                        
+                                                    <div class="form-group row">
+                              <div class="offset-sm-2 col-sm-4">
+                              <button type="submit" name="submit" class="btn btn-primary">update</button>
+                            </div>
+                              
+   
+                            
+                          </div>
+                        </form>
+                      </div>
+                
 
-  <div class="table-responsive">          
-  <table class="table" id="table">
-    <thead>
-        
-    
-      <tr>
-        <th>Blog</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-        <?php foreach (($blogs?:[]) as $blog): ?>
-            <tr>
-               <td><?= $blog['title'] ?></td>
-               <td><a href="./updateblog/?id=<?= $blog['id'] ?>>"> update</a></td>
-               <td><a href='./delete/<?= $pet['id'] ?>'>delete</a></td>
-            </tr>
-         <?php endforeach; ?>
-    </tbody>
-  </table>
-  </div>
-</div>
+                </section><!--section Nav-->
                 
             </div><!--cols 3-->
 
-           <div class="col-md-2">
-                <section id="">
- 
-
-                </section><!--section Nav-->
-                
-                <section id="nav2">
- 
-                    <h2><?= $username ?></h2>
-                    <p>Bio: <?= $bio ?></p>
-
-                </section><!--section Nav-->
             </div><!--End row-->
             
 
