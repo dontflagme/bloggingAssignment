@@ -155,7 +155,7 @@ VALUES
          */
         function allUserBlogs($id)
         {
-            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM blog_content WHERE member_id = $id";
+            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM `blog_content` WHERE member_id=$id";
             $results = $this->_pdo->query($select);
             
              
@@ -168,7 +168,55 @@ VALUES
              
             return $resultsArray;
         }
-         
+        
+                function allUserBlogsTable()
+        {
+            $select = "SELECT id, member_id, title, blog_content, click_count, isDeleted FROM `blog_content` GROUP BY member_id";
+            $results = $this->_pdo->query($select);
+            
+             
+            $resultsArray = array();
+             
+            //map each pet id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[$row['id']] = $row;
+            }
+             
+            return $resultsArray;
+        }
+        
+        
+        function mostRecentBlogAll()
+        {
+            $select = 'SELECT blog_content.id, blog_content.title, blog_content.blog_content, blog_members.username, blog_members.id, blog_members.bio FROM blog_content INNER JOIN blog_members ON blog_content.member_id=blog_members.id ORDER BY blog_content.id ';
+
+            $results = $this->_pdo->query($select);
+
+            $resultsArray = array();
+
+            //map each member id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[$row['id']] = $row;
+            }
+
+            return $resultsArray;
+        }
+
+        function allUserBlogsById($member_id)
+        {
+            $select = "SELECT id, member_id, title, blog_content, date_added, click_count, isDeleted FROM `blog_content` WHERE member_id=$member_id";
+            $results = $this->_pdo->query($select);
+            
+             
+            $resultsArray = array();
+             
+            //map each pet id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[$row['id']] = $row;
+            }
+             
+            return $resultsArray;
+        }         
         /**
          * Returns a pet that has the given id.
          *
@@ -258,6 +306,55 @@ VALUES
             $statement->execute();
              
             return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        
+                function memberById($id)
+        {
+            $select = 'SELECT id, username, email, member_password, profile_pic, bio FROM blog_members WHERE id=:id';
+             
+            $statement = $this->_pdo->prepare($select);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+             
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        
+        function recentBlogById($id)
+        {
+            
+            $select = "SELECT id, member_id, title, blog_content, date_added, click_count, isDeleted FROM blog_content WHERE member_id=$id ORDER BY date_added";
+             
+            $results = $this->_pdo->query($select);
+            
+             
+            $resultsArray = array();
+             
+            //map each pet id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $resultsArray[$row['member_id']] = $row;
+            }
+             
+        
+            return $resultsArray;
+        }
+        
+        function countBlogs($id)
+        {
+            
+            $select = "SELECT id, member_id, title, blog_content, date_added, click_count, isDeleted FROM blog_content WHERE member_id=$id ORDER BY date_added";
+             
+            $results = $this->_pdo->query($select);
+            
+             
+           
+             $blogPostCount = -1;
+            //map each pet id to a row of data for that pet
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                $blogPostCount++;
+            }
+             
+        
+            return $blogPostCount;
         }
          
         /**

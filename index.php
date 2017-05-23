@@ -16,27 +16,102 @@ $f3->set('DEBUG', 3);
 $bloggerDB = new bloggerDB();
 
                   //Define a default route
-                    $f3->route('GET /', function() {
+                    $f3->route('GET /', function($f3) {
                       $view = new View;
                       $member = new Member("", "", "", "", "");
                       
                       $_SESSION['member'] = $member;
+                      
+                      $recentBlog = $GLOBALS['bloggerDB']-> mostRecentBlogAll();
+                       
+                        //$recentBlog = $GLOBALS['bloggerDB']->recentBlogById($eachBlog['id']);
+                       //$f3->set('blogContent', $eachBlog['id']);
+                       $f3->set('blogDB', $recentBlog);
+
                       echo Template::instance()->render('pages/home.html');
                      }
                    );
                     
                   //views all blogs of one member
                   $f3->route('GET /viewBlog',
-                   function(){
-                    $view = new View;
-                    echo $view->render('pages/viewblog.html');
+                   function($f3){
+                    
+                    $id=$_GET['member_id'];
+                   
+                    //$GLOBALS['bloggerDB']
+                    $allUserBlogs = $GLOBALS['bloggerDB']->allUserBlogsById($id);
+                     $allUserMember = $GLOBALS['bloggerDB']->memberById($id);
+                     $recentBlog = $GLOBALS['bloggerDB']->recentBlogById($id);
+                     
+                     
+                      //$blogCount = $GLOBALS['bloggerDB']->countBlogs($id);
+                    $f3->set('bloggerDB', $allUserBlogs);
+                    $f3->set('username', $allUserMember['username']);
+                    $f3->set('bio', $allUserMember['bio']);
+                    
+                    $f3->set('recentBlog', $recentBlog[$id]['blog_content']);
+
+                     echo Template::instance()->render('pages/viewblog.php');
+                    // echo $recentBlog['blog_content'];
+                    //print_r($recentBlog);
+                   // echo str_word_count($recentBlog[$id]['blog_content']);
+                   });
+                  
+                                    //views all blogs of one member
+                  $f3->route('GET /viewBloglogin',
+                   function($f3){
+                    
+                    $id=$_GET['member_id'];
+                   
+                    //$GLOBALS['bloggerDB']
+                    $allUserBlogs = $GLOBALS['bloggerDB']->allUserBlogsById($id);
+                     $allUserMember = $GLOBALS['bloggerDB']->memberById($id);
+                     $recentBlog = $GLOBALS['bloggerDB']->recentBlogById($id);
+                     
+                     
+                      $blogCount = $GLOBALS['bloggerDB']->countBlogs($id);
+                    $f3->set('bloggerDB', $allUserBlogs);
+                    $f3->set('username', $allUserMember['username']);
+                    $f3->set('bio', $allUserMember['bio']);
+                    
+                    $f3->set('recentBlog', $recentBlog[$id]['blog_content']);
+
+                     echo Template::instance()->render('pages/viewbloglogin.php');
+                    // echo $recentBlog['blog_content'];
+                    //print_r($recentBlog);
+                    echo str_word_count($recentBlog[$id]['blog_content']);
                    });
                   
                   //Read the full content of the blog.
                   $f3->route('GET /fullblog',
-                   function(){
-                    $view = new View;
-                    echo $view->render('pages/fullblog.html');
+                   function($f3){
+                   $blogId = $_GET['id'];
+
+                   $blogDB = $GLOBALS['bloggerDB']->blogById($blogId);
+                   $title = $blogDB['title'];
+                   $content = $blogDB['blog_content'];
+                   
+                   
+                   
+                   $f3->set('title', $title);
+                   $f3->set('content', $content);
+                    echo Template::instance()->render('pages/fullblog.html');
+                   });
+                  
+                                    //Read the full content of the blog.
+                  $f3->route('GET /fullbloglogin',
+                   function($f3){
+                   $blogId = $_GET['id'];
+
+                   $blogDB = $GLOBALS['bloggerDB']->blogById($blogId);
+                   $title = $blogDB['title'];
+                   $content = $blogDB['blog_content'];
+                   
+                   
+                   
+                   $f3->set('title', $title);
+                   $f3->set('content', $content);
+                    echo Template::instance()->render('pages/fullbloglogin.php');
                    });
                   
                   //About us page of site
@@ -44,6 +119,7 @@ $bloggerDB = new bloggerDB();
                    function(){
                     $view = new View;
                     echo $view->render('pages/aboutus.html');
+                    
                    });
                   
                                     //About us page of site
@@ -97,11 +173,12 @@ $bloggerDB = new bloggerDB();
                       echo 'Hello password:' . $member->getPassword();
                       echo 'Hello profile pic: ' . $member->getProfilePic();
                       echo 'Hello bio:' . $member->getBio();
-                      print_r($members);
+                      //print_r($members);
+                      $f3->reroute('/loginhome');
                     }
                     
                     else{
-                      $f3->reroute('/login');
+                      $f3->reroute('/loginhome');
                     }
                    });
                   
@@ -110,8 +187,24 @@ $bloggerDB = new bloggerDB();
                    function($f3){
 
                        $member = $_SESSION['member'];
+                       $recentBlog = $GLOBALS['bloggerDB']-> mostRecentBlogAll();
+                       
+                        //$recentBlog = $GLOBALS['bloggerDB']->recentBlogById($eachBlog['id']);
+                       //$f3->set('blogContent', $eachBlog['id']);
+                       $f3->set('blogDB', $recentBlog);
                       echo Template::instance()->render('pages/loginhome.html');
-                       echo 'Hello Getting: '. $member->getUsername();
+                       //echo 'Hello Getting: '. $eachBlog['id'];
+                      // print_r($recentBlog);
+              
+                   });
+                  
+                  $f3->route('GET /logOut',
+                   function($f3){
+
+                       //session_destroy();
+                       $f3->reroute('/login');
+                       //echo 'Hello Getting: '. $eachBlog['id'];
+                       //print_r($eachBlog);
               
                    });
                   
@@ -219,7 +312,7 @@ $bloggerDB = new bloggerDB();
                    $currentBlog = $GLOBALS['bloggerDB']->blogById($bloggingId);
                    
                    $title = $_POST['title'];
-                   $blogentry = $_POST['blogEntry'];
+                   $blogEntry = $_POST['blogEntry'];
                    
                    $GLOBALS['bloggerDB']->updateblogById($id, $title, $blogEntry);
                     

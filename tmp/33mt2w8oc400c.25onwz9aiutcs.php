@@ -28,9 +28,9 @@
             <div class="col-md-8">
                 <section id="nav">
                     <img src="images/user.png" />
-                    <center><h1>{{@title}}</h1></center>
+                    <center><h1><?= $title ?></h1></center>
         
-                    <p>{{@content}}</p>
+                    <p><?= $content ?></p>
                     
                     
                 </section><!--section Nav-->

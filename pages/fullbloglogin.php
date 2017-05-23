@@ -16,11 +16,11 @@
                 <section id="nav">
  
                             <h2>Blog Site</h2>
-                            <p><a href="./" /> Home</a></p>
-                            <p><a href="./register" /> Become a blogger</a></p>
-                            <p><a href="./aboutus" /> About us</a></p>
-                            <p><a href="./login" /> Login</a></p>
-                            <div id="spacer"> </div>
+                            <p><a href="./loginhome" /> Home</a></p>
+                            <p><a href="./myblogs" /> my Blogs</a></p>
+                            <p><a href="./createblog" /> create blog</a></p>
+                            <p><a href="./aboutuslogin" /> About us</a></p>
+                            <p><a href="#" /> Logout</a></p>
 
                 </section><!--section Nav-->
             </div><!--cols 3-->

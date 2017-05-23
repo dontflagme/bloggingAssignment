@@ -28,7 +28,7 @@
                             <p><a href="./myblogs" /> my Blogs</a></p>
                             <p><a href="./createblog" /> create blog</a></p>
                             <p><a href="./aboutuslogin" /> About us</a></p>
-                            <p><a href="#" /> Logout</a></p>
+                            <p><a href="./logOut" /> Logout</a></p>
                             <div id="spacer"> </div>
                 </section><!--section Nav-->
             </div><!--cols 3-->
